@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>Prepare images for AI training</category>
+  <title>sampleImage</title>
+  <version>1.0</version>
+  <contributor>Juan Carlos Prieto</contributor>
+  <parameters>        
+    <label>Input parameters</label>
+    <description>Input parameters</description>
+
+    <file multiple="true">
+      <name>vectorImageFilename</name>      
+      <longflag>img</longflag>
+      <description>Input images with 1 scalar value, all the input images should be in the same space (registered) and have the same dimensions. First, the filter will 'stack' the images together creating a single image with multiple channels. Next, the image is splitted in different regions. This filter requires at least one image</description>
+    </file>
+
+    <file>
+      <name>maskImageFilename</name>
+      <longflag>mask</longflag>      
+      <description>Extract samples only in the masked region (optional)</description>
+    </file>
+
+    <integer>
+      <name>numSamples</name>
+      <longflag>samples</longflag>
+      <default>-1</default>
+      <description>Iterate randomly and extract the selected number of samples. (-1 = extracts all)</description>
+    </integer>   
+
+    <integer>
+      <name>neighborhood</name>
+      <longflag>neighborhood</longflag>
+      <default>32</default>
+      <description>Size of the neighborhood radius N. The image samples will have size [2*N, 2*N, 2*N]</description>
+    </integer>  
+    
+  </parameters>
+
+  <parameters>
+    <label>Ouput parameters</label>
+    <description>Output parameters</description>
+
+    <file>
+      <name>outputImageDirectory</name>
+      <longflag>outDir</longflag>
+      <default>./</default>
+    </file>
+
+    <string>
+      <name>prefix</name>
+      <longflag>prefix</longflag>
+      <description>Sets the output using the prefix (optional). If not specified a uuid is generated</description>
+    </string>
+
+  </parameters>
+</executable>

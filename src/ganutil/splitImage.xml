@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>Prepare images for AI training</category>
+  <title>splitImage</title>
+  <version>1.0</version>
+  <contributor>Juan Carlos Prieto</contributor>
+  <parameters>        
+    <label>Input parameters</label>
+    <description>Input parameters</description>
+
+    <file multiple="true">
+      <name>vectorImageFilename</name>      
+      <longflag>img</longflag>
+      <description>Input images with 1 scalar value, all the input images should be in the same space (registered) and have the same dimensions. First, the filter will 'stack' the images together creating a single image with multiple channels. Next, the image is splitted in different regions. This filter requires at least one image</description>
+    </file>
+
+    <integer>
+      <name>neighborhood</name>
+      <longflag>neighborhood</longflag>
+      <default>16</default>
+      <description>Size of the neighborhood radius. The image will be split using this parameter. For an image 256x256x256 and a neighborhood=16 the output will produce  512 images, i.e., 2*neighborhood=32 -> 256/32 = 8, 8x8x8=512</description>
+    </integer>   
+    
+  </parameters>
+
+  <parameters>
+    <label>Ouput parameters</label>
+    <description>Output parameters</description>
+
+    <file>
+      <name>outputImageDirectory</name>
+      <longflag>outDir</longflag>
+      <default>./</default>
+    </file>
+
+    <string>
+      <name>prefix</name>
+      <longflag>prefix</longflag>
+    </string>
+
+  </parameters>
+</executable>

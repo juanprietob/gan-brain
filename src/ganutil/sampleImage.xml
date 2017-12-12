@@ -14,6 +14,12 @@
       <description>Input images with 1 scalar value, all the input images should be in the same space (registered) and have the same dimensions. First, the filter will 'stack' the images together creating a single image with multiple channels. Next, the image is splitted in different regions. This filter requires at least one image</description>
     </file>
 
+    <file multiple="true">
+      <name>vectorLabelImageFilename</name>
+      <longflag>label</longflag>      
+      <description>Extracts samples from the label image. The image will be extracted from the same region as the Input images (img) (optional)</description>
+    </file>
+
     <file>
       <name>maskImageFilename</name>
       <longflag>mask</longflag>      
@@ -27,12 +33,12 @@
       <description>Iterate randomly and extract the selected number of samples. (-1 = extracts all)</description>
     </integer>   
 
-    <integer>
+    <integer-vector>
       <name>neighborhood</name>
       <longflag>neighborhood</longflag>
-      <default>32</default>
-      <description>Size of the neighborhood radius N. The image samples will have size [2*N, 2*N, 2*N]</description>
-    </integer>  
+      <default>32,32,32</default>
+      <description>Size of the neighborhood radius N. The image samples will have size [2*N + 1, 2*N + 1, 2*N + 1]</description>
+    </integer-vector>  
     
   </parameters>
 
